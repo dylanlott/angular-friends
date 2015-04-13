@@ -1,7 +1,8 @@
 var app = angular.module('friends'); 
 
 app.controller('FriendController', function($scope){
-	$scope.searchTerm = ''; 
+	// $scope.mahTest = "friends.name"
+
 	$scope.friends =[
     {
         "name": "Preston McNeil",

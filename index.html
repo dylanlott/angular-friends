@@ -27,20 +27,20 @@
   <div class="form-group">
 
   <input class="form-control" placeholder="Search Anything About Your Friends" ng-model="searchText"></br>
-  <input class="form-control" placeholder="Search a location" ng-model="searchLocation">
+  <input class="form-control" placeholder="Search By Location" ng-model="searchLocation">
   <!-- The stuff below is For step 5....get rid of the one above if you wish-->
 <!--    
     <input class="form-control" placeholder="Search Your Friends' Name" >
     <input class="form-control" placeholder="Search Your Freinds' Location" > 
  -->
-    <select class="input-medium">
-        <option>Name</option>
-        <option># friends</option>
-        <option>City</option>
-        <option>State</option>
-        <option>Country</option>
+    <select class="input-medium" ng-model="sortBy">
+        <option value="name">Name</option>
+        <option value="friend_count"># friends</option>
+        <option value="current_location.city">City</option>
+        <option value="current_location.state">State</option>
+        <option value="current_location.country">Country</option>
     </select>
-    <select class="input-medium">
+    <select class="input-medium" ng-model="ascending">
         <option value="false">Descending</option>
         <option value="true">Ascending</option>
     </select>
@@ -48,7 +48,7 @@
 </form>
 
   <ul>
-     <li class='friend' ng-repeat="friend in friends | filter:{name:searchText} | filter:searchLocation">
+     <li class='friend' ng-repeat="friend in friends | filter:{name:searchText} | filter:searchLocation | orderBy:sortBy:ascending">
        <img class="profile-pic" src='{{friend.pic_square}}'>
       <h3>{{friend.name}}</h3>
       <div class="location">
